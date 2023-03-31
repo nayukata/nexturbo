@@ -34,7 +34,7 @@ pnpm server:db:migrate
 pnpm server:db:seed
 ```
 
-### NestJS / Web / Admin
+### Admin / User / Server
 
 - サーバー起動
 
@@ -42,9 +42,9 @@ pnpm server:db:seed
 pnpm dev
 ```
 
-- NestJS
-  http://localhost:8040/
-- Web
-  http://localhost:3000/
 - Admin
-  http://localhost:3001/
+  http://localhost:3005/
+- User
+  http://localhost:3006/
+- Server
+  http://localhost:8040/

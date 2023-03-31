@@ -43,33 +43,6 @@ module.exports = {
         destructuredArrayIgnorePattern: '^_',
       },
     ],
-    '@typescript-eslint/naming-convention': [
-      'error',
-      {
-        selector: ['typeLike'],
-        format: ['PascalCase'],
-      },
-      {
-        selector: ['function', 'method'],
-        format: ['camelCase', 'snake_case'],
-        filter: { regex: '^_*$', match: false },
-      },
-      // function 以外の variable, parameter は camelCase
-      {
-        selector: ['variable', 'parameter'],
-        types: ['boolean', 'string', 'number', 'array'],
-        format: ['camelCase', 'snake_case'],
-        filter: { regex: '^_*$', match: false },
-      },
-      // boolean の variable は特定の prefix をつけた状態で PascalCase
-      {
-        selector: 'variable',
-        types: ['boolean'],
-        format: ['PascalCase'],
-        prefix: ['no', 'is', 'has', 'should', 'can'],
-        filter: { regex: '^_*$', match: false },
-      },
-    ],
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
     'prettier/prettier': [
@@ -87,12 +60,6 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['**/constants/**/*.ts'],
-      rules: {
-        '@typescript-eslint/naming-convention': 'off',
-      },
-    },
-    {
       files: [
         '**/app/**/*.tsx',
         '**/pages/**/*.ts',
@@ -103,7 +70,6 @@ module.exports = {
       ],
       rules: {
         'import/no-default-export': 'off',
-        '@typescript-eslint/naming-convention': 'off',
       },
     },
     {
