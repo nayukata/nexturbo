@@ -1,16 +1,46 @@
 {
+  "name": "my-turborepo",
   "private": true,
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "clean": "turbo run clean",
+    "admin:dev": "turbo run dev --filter=admin",
+    "user:dev": "turbo run dev --filter=user",
+    "server:dev": "turbo run dev --filter=server...",
+    "server:db:migrate": "turbo run db:migrate --filter=server...",
+    "server:db:seed": "turbo run db:seed --filter=server...",
+    "server:db:reset": "turbo run db:reset --filter=server...",
+    "server:prisma:generate": "turbo run prisma:generate --filter=server...",
+    "lint": "turbo run lint -- --fix",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "prepare": "husky install"
   },
+  "packageManager": "pnpm@7.15.0",
   "devDependencies": {
-    "eslint": "^7.32.0",
-    "eslint-config-custom": "workspace:*",
-    "prettier": "^2.5.1",
+    "husky": "8.0.2",
+    "lint-staged": "^13.1.0",
+    "prettier": "^2.8.1",
+    "eslint-config-custom": "*",
     "turbo": "latest"
   },
-  "packageManager": "pnpm@7.15.0"
+  "lint-staged": {
+    "apps/admin/**/*.@(ts|tsx)": [
+      "eslint --fix",
+      "prettier --w"
+    ],
+    "apps/user/**/*.@(ts|tsx)": [
+      "eslint --fix",
+      "prettier --w"
+    ],
+    "apps/server/src/**/*.@(ts|tsx)": [
+      "eslint --fix",
+      "prettier --w"
+    ]
+  },
+  "engines": {
+    "npm": "use pnpm please!",
+    "yarn": "use pnpm please!",
+    "pnpm": ">=7.19.0"
+  }
 }
